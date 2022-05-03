@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "declarationDir": "dist"
   },
-  "files": ["src/insomnia-kayak-strava-layout.tsx"],
+  "files": ["src/insomnia-kayak-strava-navbar.tsx"],
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }
