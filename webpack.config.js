@@ -4,7 +4,7 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
-    orgName: "insomnia",
+    orgName: "akinsgre",
     projectName: "kayak-strava-navbar",
     webpackConfigEnv,
     argv,

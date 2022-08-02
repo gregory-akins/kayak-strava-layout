@@ -14,13 +14,12 @@ export const Navbar = () => {
   const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET } = process.env;
 
   const redirectUrl = "http://localhost:9000/redirect";
-  const scope = "read";
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const userName = localStorage.getItem("username");
   const handleLogin = () => {
     navigateToUrl(
-      `http://www.strava.com/oauth/authorize?client_id=58115&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=${scope}`
+      `http://www.strava.com/oauth/authorize?client_id=58115&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=activity:read_all`
     );
   };
 

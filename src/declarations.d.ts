@@ -37,3 +37,16 @@ declare module "*.svg" {
   const src: string;
   export default src;
 }
+
+declare module "@akinsgre/kayak-strava-utility" {
+  export function authenticate(
+    location: string,
+    REACT_APP_CLIENT_ID: string,
+    REACT_APP_CLIENT_SECRET: string
+  );
+  export function testAuthGetter(
+    authTok: string,
+    REACT_APP_CLIENT_ID: string,
+    REACT_APP_CLIENT_SECRET: string
+  );
+}
