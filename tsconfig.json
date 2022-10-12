@@ -1,11 +1,11 @@
 {
   "extends": "ts-config-single-spa",
   "compilerOptions": {
-    "module":"CommonJS",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "declarationDir": "dist"
-  },, "__mocks__"
+  },
   "files": ["src/akinsgre-kayak-strava-navbar.tsx"],
   "include": ["src/**/*", "src/types"],
   "exclude": ["src/**/*.test*"]
