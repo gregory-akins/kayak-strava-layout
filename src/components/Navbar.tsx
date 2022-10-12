@@ -11,16 +11,14 @@ import { useNavigate } from "react-router-dom";
 import { navigateToUrl } from "single-spa";
 
 export const Navbar = () => {
-  const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET } = process.env;
-
+  const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const redirectUrl = "http://localhost:9000/redirect";
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const userName = localStorage.getItem("username");
   const handleLogin = () => {
-    navigateToUrl(
-      `http://www.strava.com/oauth/authorize?client_id=58115&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=activity:read_all`
-    );
+    const loginUrl = `http://www.strava.com/oauth/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=activity:read_all`;
+    navigateToUrl(loginUrl);
   };
 
   const handleClose = () => {
