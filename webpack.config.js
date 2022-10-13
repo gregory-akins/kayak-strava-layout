@@ -11,6 +11,13 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    plugins: [new Dotenv()],
+    plugins: [
+      new Dotenv({
+        path: `./.env${
+          webpackConfigEnv.development === true ? ".development" : ""
+        }`,
+      }),
+    ],
   });
+
 };
