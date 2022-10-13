@@ -12,7 +12,7 @@ import { navigateToUrl } from "single-spa";
 
 export const Navbar = () => {
   const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-  const redirectUrl = "http://localhost:9000/redirect";
+  const redirectUrl = process.env.REACT_APP_REDIRECT;
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const userName = localStorage.getItem("username");
