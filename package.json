@@ -2,7 +2,7 @@
   "name": "@akinsgre/kayak-strava-navbar",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --port 8500",
+    "start": "webpack serve --port 8500 --env development",
     "start:standalone": "webpack serve --env standalone",
     "build": "concurrently yarn:build:*",
     "build:webpack": "webpack --mode=production",
