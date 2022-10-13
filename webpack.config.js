@@ -2,6 +2,8 @@ const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
 const Dotenv = require("dotenv-webpack");
 
+const path = require("path");
+
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     orgName: "akinsgre",
@@ -13,9 +15,7 @@ module.exports = (webpackConfigEnv, argv) => {
   return merge(defaultConfig, {
     plugins: [
       new Dotenv({
-        path: `./.env${
-          webpackConfigEnv.development  ? ".development" : "X"
-        }`,
+        path: path.join(__dirname, (`./.env${webpackConfigEnv.development  ? ".development" : ""}`)),
       }),
     ],
   });
