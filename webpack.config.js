@@ -14,7 +14,7 @@ module.exports = (webpackConfigEnv, argv) => {
     plugins: [
       new Dotenv({
         path: `./.env${
-          webpackConfigEnv.development === true ? ".development" : ""
+          webpackConfigEnv.development  ? ".development" : "X"
         }`,
       }),
     ],
