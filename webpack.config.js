@@ -14,15 +14,7 @@ module.exports = (webpackConfigEnv, argv) => {
   return merge(defaultConfig, {
     plugins: [
       new Dotenv({
-<<<<<<< Updated upstream
-        path: `./.env${
-          webpackConfigEnv.development  ? ".development" : "X"
-        }`,
-=======
-        path: path.resolve(__dirname, `${
-          webpackConfigEnv.development  ? ".env.development" : ".env"
-        }`),
->>>>>>> Stashed changes
+        path: path.join(__dirname, (`./.env${webpackConfigEnv.development  ? ".development" : ""}`)),
       }),
     ],
   });
