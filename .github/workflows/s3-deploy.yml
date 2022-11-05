@@ -19,7 +19,10 @@ jobs:
         uses: ozaytsev86/create-env-file@v1
         with:
           ENV_REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
-          
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
 
       - name: Build
         run: yarn build
