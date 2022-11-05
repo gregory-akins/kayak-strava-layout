@@ -15,7 +15,7 @@ jobs:
         with:
           envkey_REACT_APP_CLIENT_ID: "58115"
           envkey_REACT_APP_CLIENT_SECRET: ${{ secrets.REACT_APP_CLIENT_ID }}
-          directory: /home/runner/work/kayak-strava-navbar/kayak-strava-navbar/
+          directory: /home/runner/work/kayak-strava-navbar/
           file_name: .env
           fail_on_empty: false
       - uses: actions/checkout@v3
