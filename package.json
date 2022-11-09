@@ -1,7 +1,7 @@
 {
   "name": "@akinsgre/kayak-strava-navbar",
-    "license": "MIT",
-    "version":"1.0.2",
+  "license": "MIT",
+  "version": "1.0.2",
   "scripts": {
     "start": "webpack serve --port 8500 --env development",
     "start:standalone": "webpack serve --env standalone",
@@ -18,7 +18,7 @@
     "build:types": "tsc"
   },
   "devDependencies": {
-    "@akinsgre/kayak-strava-utility": "^0.0.2",
+    "@akinsgre/kayak-strava-utility": "^0.0.13",
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
     "@babel/plugin-transform-runtime": "^7.15.0",
@@ -31,7 +31,7 @@
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.4",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
+    "@testing-library/react": "^13.4.0",
     "@types/jest": "^27.0.1",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
