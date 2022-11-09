@@ -9,15 +9,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import { useNavigate } from "react-router-dom";
 import { navigateToUrl } from "single-spa";
+import { useServiceConfig } from "@akinsgre/kayak-strava-utility";
 
 export const Navbar = () => {
-  const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-  const redirectUrl = process.env.REACT_APP_REDIRECT;
+  let clientId = "";
+  let redirectUrl: string = "";
+  useServiceConfig().then((value) => {
+    clientId = value.clientId;
+    redirectUrl = value.redirectUrl;
+  });
+
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const userName = localStorage.getItem("username");
   const handleLogin = () => {
-    const loginUrl = `http://www.strava.com/oauth/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=activity:read_all`;
+    //TODO figure out how to use testAuthGetter from utility
+    const loginUrl = `http://www.strava.com/oauth/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=activity:read_all`;
     navigateToUrl(loginUrl);
   };
 
