@@ -10,16 +10,14 @@ export interface ServiceConfig {
 }
 
 export async function useServiceConfig(): Promise<ServiceConfig> {
-  var promise = new Promise<ServiceConfig>( (resolve, reject) => {
-
+  var promise = new Promise<ServiceConfig>((resolve, reject) => {
     const serviceConfig: ServiceConfig = {
       stravaUrl: "",
       clientId: "",
       clientSecret: "",
-      redirectUrl: ""
-    }    
+      redirectUrl: "",
+    };
     resolve(serviceConfig);
-
-  }); 
-  return promise
+  });
+  return promise;
 }
