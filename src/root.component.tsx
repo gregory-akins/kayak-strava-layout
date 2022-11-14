@@ -7,7 +7,7 @@ export default function Root(props) {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/redirect/*" element={<StravaRedirect />} />
+        <Route path="/*" element={<StravaRedirect />} />
       </Routes>
     </Router>
   );

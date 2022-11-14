@@ -50,7 +50,7 @@ declare module "@akinsgre/kayak-strava-utility" {
     location: string,
     REACT_APP_CLIENT_ID: string,
     REACT_APP_CLIENT_SECRET: string
-  );
+  ): Promise<string>;
   export function testAuthGetter(
     authTok: string,
     REACT_APP_CLIENT_ID: string,

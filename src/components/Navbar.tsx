@@ -23,7 +23,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const userName = localStorage.getItem("username");
   const handleLogin = () => {
-    const loginUrl = `http://www.strava.com/oauth/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=activity:read_all`;
+    const loginUrl = `http://www.strava.com/oauth/authorize?client_id=${clientId}&response_type=code&approval_prompt=force&scope=activity:read_all&redirect_uri=${redirectUrl}/exchange_token`;
     navigateToUrl(loginUrl);
   };
 
