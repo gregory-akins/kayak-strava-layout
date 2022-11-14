@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-import { authenticate } from "@akinsgre/kayak-strava-utility";
+import { useServiceConfig, authenticate } from "@akinsgre/kayak-strava-utility";
 
 export interface PostProps {
   setUser: (token: any) => void;
@@ -9,15 +8,28 @@ export interface PostProps {
 }
 
 export default function StravaRedirect() {
+  let clientId: string;
+  let secret: string;
   const navigate = useNavigate();
   const location = useLocation();
+  const fetchData = async () => {
+    const data = await authenticate(location.pathname, clientId, secret);
+  };
   useEffect(() => {
-    const path = authenticate(
-      location.pathname,
-      process.env.REACT_APP_CLIENT_ID,
-      process.env.REACT_APP_CLIENT_SECRET
-    );
-    navigate(path);
+    (async () => {
+      //ToDO let's fix the useServiceConfig to use a different name
+      /*eslint-disable */
+      useServiceConfig()
+        .then((value) => {
+          clientId = value.clientId;
+          secret = value.clientSecret;
+        })
+        .then(async (value) => {
+          await fetchData().catch(console.error);
+        });
+      /*eslint-enable */
+    })();
   }, [location.pathname, navigate]);
+
   return <div>Nothing here to see</div>;
 }
