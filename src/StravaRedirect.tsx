@@ -31,5 +31,5 @@ export default function StravaRedirect() {
     })();
   }, [location.pathname, navigate]);
 
-  return <div>Nothing here to see</div>;
+  return <div></div>;
 }
