@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSessionStorage } from "usehooks-ts";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,6 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import { navigateToUrl } from "single-spa";
 import { useServiceConfig } from "@akinsgre/kayak-strava-utility";
+import { setUser } from "../actions";
 
 export const Navbar = () => {
   let clientId = "";
@@ -19,16 +21,13 @@ export const Navbar = () => {
     redirectUrl = value.redirectUrl;
   });
 
-  const [open, setOpen] = useState(false);
+  const [userName, setUserName] = useSessionStorage("userName", "Signup");
   const navigate = useNavigate();
-  const userName = localStorage.getItem("username");
+
   const handleLogin = () => {
     const loginUrl = `http://www.strava.com/oauth/authorize?client_id=${clientId}&response_type=code&approval_prompt=force&scope=activity:read_all&redirect_uri=${redirectUrl}/exchange_token`;
-    navigateToUrl(loginUrl);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
+    navigateToUrl(loginUrl);
   };
 
   return (
@@ -46,7 +45,7 @@ export const Navbar = () => {
           Paddle Strava
         </Typography>
         <Button color="inherit" onClick={handleLogin}>
-          {localStorage.getItem("username") || "Signup"}
+          {userName || "Signup"}
         </Button>
       </Toolbar>
     </AppBar>
