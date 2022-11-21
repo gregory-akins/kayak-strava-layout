@@ -47,13 +47,17 @@ declare module "@akinsgre/kayak-strava-utility" {
   }
   export function useServiceConfig(): Promise<ServiceConfig>;
   export function authenticate(
-    location: string,
     REACT_APP_CLIENT_ID: string,
     REACT_APP_CLIENT_SECRET: string
-  ): Promise<string>;
-  export function testAuthGetter(
-    authTok: string,
-    REACT_APP_CLIENT_ID: string,
-    REACT_APP_CLIENT_SECRET: string
-  );
+  ): Athlete;
+  export interface Token {
+    access_token: number;
+    athlete: Athlete;
+  }
+  export interface Athlete {
+    id: number;
+    username: string;
+    firstname: string;
+    lastname: string;
+  }
 }
