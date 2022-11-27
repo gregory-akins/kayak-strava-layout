@@ -19,6 +19,6 @@ module.exports = (webpackConfigEnv, argv) => {
           `${webpackConfigEnv.development ? ".env.development" : "../.env"}`
         ),
       }),
-    ],
+    ]
   });
 };

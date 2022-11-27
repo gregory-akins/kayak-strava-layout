@@ -52,6 +52,8 @@ declare module "@akinsgre/kayak-strava-utility" {
   ): Athlete;
   export interface Token {
     access_token: number;
+    refresh_token: number;
+    expiry: number;
     athlete: Athlete;
   }
   export interface Athlete {
