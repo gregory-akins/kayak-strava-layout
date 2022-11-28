@@ -37,19 +37,24 @@ export default function StravaRedirect(postProps: PostProps) {
       redirectUrl = config.redirectUrl;
 
       // see if we have a access_token that works
-
-      const token: Token = JSON.parse(Cookies.get("token")) as Token;
+      const cookieToken: any = Cookies.get("token");
 
       let userData: Athlete;
       //Checking if token isn't defined, current date is past the expiry date
-      if (token === undefined || token.expiry < Math.floor(Date.now() / 1000)) {
+      if (cookieToken === undefined) {
         userData = await authenticate(config.clientId, config.clientSecret);
       } else {
-        console.log("don't authenticate, just get the athlete", token);
-        userData = {
-          firstname: token.athlete.firstname,
-          lastname: token.athlete.lastname,
-        } as Athlete;
+        const token: Token = JSON.parse(cookieToken) as Token;
+        if (
+          token === undefined ||
+          token.expiry < Math.floor(Date.now() / 1000)
+        ) {
+          console.log("don't authenticate, just get the athlete", token);
+          userData = {
+            firstname: token.athlete.firstname,
+            lastname: token.athlete.lastname,
+          } as Athlete;
+        }
       }
       if (userData) {
         setUserName(`${userData.firstname} ${userData.lastname}`);
