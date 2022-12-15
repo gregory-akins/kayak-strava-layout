@@ -5,6 +5,8 @@ import {
   authenticate,
   ServiceConfig,
   Athlete,
+  refreshAuth,
+  getAthlete,
   Token,
 } from "@akinsgre/kayak-strava-utility";
 import Button from "@mui/material/Button";
@@ -30,8 +32,6 @@ export default function StravaRedirect(postProps: PostProps) {
       //ToDO let's fix the useServiceConfig to use a different name
       /*eslint-disable */
       const config: ServiceConfig = await useServiceConfig();
-      console.log("Is config set", config);
-
       clientId = config.clientId;
       secret = config.clientSecret;
       redirectUrl = config.redirectUrl;
@@ -44,12 +44,29 @@ export default function StravaRedirect(postProps: PostProps) {
       if (cookieToken === undefined) {
         userData = await authenticate(config.clientId, config.clientSecret);
       } else {
-        const token: Token = JSON.parse(cookieToken) as Token;
+        let token: Token = JSON.parse(cookieToken) as Token;
+        console.log("Token will expire ", new Date(token.expiry * 1000));
+        console.log("Now is ", new Date());
+        console.log("Now timestamp is ", Math.floor(Date.now() / 1000));
+        console.log("Token hasn't exired yet? ", token.expiry > Math.floor(Date.now() / 1000));
         if (
-          token === undefined ||
-          token.expiry < Math.floor(Date.now() / 1000)
+          token != undefined &&
+          token.expiry > Math.floor(Date.now() / 1000)
         ) {
           console.log("don't authenticate, just get the athlete", token);
+          getAthlete(token.access_token).then((data) => {
+            console.log("Data 1", data);
+            userData = {
+              firstname: data.firstname,
+              lastname: data.lastname,
+            } as Athlete;
+            setUserName(`${userData.firstname} ${userData.lastname}`);
+          });
+        } else {
+          console.log("We have a cookie with a refresh Token, Let's try to refresh the token");
+          token = await refreshAuth();
+          //get the athlete
+          
           userData = {
             firstname: token.athlete.firstname,
             lastname: token.athlete.lastname,
@@ -57,6 +74,7 @@ export default function StravaRedirect(postProps: PostProps) {
         }
       }
       if (userData) {
+        console.log("When did we make it here?  This timey, wimey stuff is weird");
         setUserName(`${userData.firstname} ${userData.lastname}`);
       }
     };

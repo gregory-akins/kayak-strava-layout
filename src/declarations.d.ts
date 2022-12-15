@@ -50,9 +50,11 @@ declare module "@akinsgre/kayak-strava-utility" {
     REACT_APP_CLIENT_ID: string,
     REACT_APP_CLIENT_SECRET: string
   ): Athlete;
+  export function refreshAuth(): Promise<Token>;
+  export function getAthlete(accessToken: String): Promise<Athlete>;
   export interface Token {
-    access_token: number;
-    refresh_token: number;
+    access_token: string;
+    refresh_token: string;
     expiry: number;
     athlete: Athlete;
   }
