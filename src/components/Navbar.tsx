@@ -23,7 +23,7 @@ export const Navbar = () => {
           Paddle Strava
         </Typography>
 
-        <StravaRedirect setUser={undefined} setUserActivities={undefined} />
+        <StravaRedirect />
       </Toolbar>
     </AppBar>
   );
