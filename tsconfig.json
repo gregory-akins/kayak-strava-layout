@@ -7,6 +7,10 @@
     "declarationDir": "dist"
   },
   "files": ["src/akinsgre-kayak-strava-navbar.tsx"],
-  "include": ["src/**/*", "src/types"],
+  "include": [
+    "src/**/*",
+    "src/types",
+    "../kayak-strava/src/StravaRedirect.tsx"
+  ],
   "exclude": ["src/**/*.test*"]
 }
