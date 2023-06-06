@@ -5,8 +5,6 @@ import IconButton from "@mui/material/IconButton";
 
 import MenuIcon from "@mui/icons-material/Menu";
 
-import StravaRedirect from "../StravaRedirect";
-
 export const Navbar = () => {
   return (
     <AppBar position="static">
@@ -20,10 +18,8 @@ export const Navbar = () => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>
-          Paddle Strava
+          River Magic
         </Typography>
-
-        <StravaRedirect />
       </Toolbar>
     </AppBar>
   );

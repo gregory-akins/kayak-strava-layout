@@ -7,6 +7,6 @@ jest.mock("@akinsgre/kayak-strava-utility");
 describe("Root component", () => {
   it("should be in the document", () => {
     const { getByText } = render(<Root name="Testapp" />);
-    expect(getByText(/Paddle Strava/i)).toBeInTheDocument();
+    expect(getByText(/River Magic/i)).toBeInTheDocument();
   });
 });
